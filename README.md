@@ -1,16 +1,42 @@
-# Ejercicios de Python
+# Trabajo práctico READ
 
-Los seis ejercicios de la práctica, cada uno en su propio archivo.
+Ejercicios de Python con Programación Orientada a Objetos. Todos trabajan con objetos guardados en memoria y solo hacen operaciones de lectura (READ). No usan base de datos.
 
-- `laboratorio.py`: muestra los equipos del laboratorio que están disponibles y, de esos, los que son del año indicado o posteriores.
-- `buscador_repuestos.py`: busca repuestos escribiendo parte de la descripción, sin importar si se escribe en mayúscula o minúscula.
-- `instance_recuperacion.py`: pide un promedio mínimo y una cantidad mínima de trabajos, y muestra los alumnos que cumplen las dos condiciones.
-- `busqueda_isbn.py`: primero muestra una versión de la búsqueda que tenía un error y después la versión corregida, con una explicación del problema.
-- `taller_ordenes.py`: permite buscar órdenes de reparación por número, por estado o por costo, y también ver el listado completo.
-- `catalogo_dispositivos.py`: muestra el catálogo de dispositivos de red usando una clase, y permite consultar por velocidad, por código o por presupuesto.
+## Archivos
 
-Para probarlos, abrir una terminal en esta carpeta y ejecutar, por ejemplo:
+El repositorio tiene cinco programas:
 
-```
-python laboratorio.py
-```
+- **ejercicio1.py**: mesa de ayuda. Consulta tickets por número y muestra los que están pendientes.
+- **ejercicio2.py**: biblioteca multimedia. Busca títulos por una palabra o parte del título, sin distinguir mayúsculas.
+- **ejercicio3.py**: laboratorio. Filtra componentes por tipo y por stock mínimo.
+- **ejercicio4.py**: catálogo de videojuegos. Consultas por género, por horas estimadas y por código.
+- **ejercicio5.py**: servicio técnico. Menú con varias consultas de reparaciones y opción de salir.
+
+Además se incluyen los tres diagramas de flujo pedidos, uno por los ejercicios 1, 3 y 5.
+
+## Diagramas de flujo
+
+Las imágenes se hicieron en draw.io y se guardaron en PNG:
+
+![Diagrama del ejercicio 1](diagrama1.png)
+
+![Diagrama del ejercicio 3](diagrama3.png)
+
+![Diagrama del ejercicio 5](diagrama5.png)
+
+## Qué se practica en cada ejercicio
+
+**Ejercicio 1 (Mesa de ayuda)**
+Tickets de soporte con número, usuario, sector, problema, prioridad y estado. Se busca un ticket por número y se cuentan los pendientes.
+
+**Ejercicio 2 (Biblioteca multimedia)**
+Recursos digitales con código, título, categoría, autor, año y disponibilidad. La búsqueda por título no distingue mayúsculas y encuentra coincidencias parciales.
+
+**Ejercicio 3 (Laboratorio)**
+Componentes con código, nombre, tipo, marca, stock y ubicación. Combina dos condiciones: el tipo pedido y un stock mínimo. Se resuelve en un solo recorrido de la lista.
+
+**Ejercicio 4 (Catálogo de videojuegos)**
+Videojuegos con código, título, género, plataforma, año y horas estimadas. Las consultas usan los métodos `es_del_genero()` y `supera_horas()`.
+
+**Ejercicio 5 (Servicio técnico)**
+Reparaciones con orden, cliente, equipo, falla, estado, técnico y costo estimado. Menú con cinco consultas distintas y opción de salir.
