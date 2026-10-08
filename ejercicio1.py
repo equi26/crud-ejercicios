@@ -1,3 +1,5 @@
+# Representa un ticket de soporte técnico individual con sus propiedades y
+# un método para mostrar sus datos formateados en consola.
 class TicketSoporte:
     def __init__(self, numero, usuario, sector, problema, prioridad, estado):
         self.numero = numero
@@ -18,6 +20,8 @@ class TicketSoporte:
         print("------------------------------")
 
 
+
+# Función encargada de instanciar y retornar una lista predefinida de tickets.
 def crear_tickets():
     tickets = [
         TicketSoporte(1001, "Luna Fernandez", "Sistemas", "No puede acceder al correo institucional", "Alta", "Pendiente"),
@@ -33,6 +37,10 @@ def crear_tickets():
     return tickets
 
 
+# ==========================================
+# BLOQUE 3: Funciones de búsqueda y filtrado
+# ==========================================
+# Busca un ticket por su número único. Retorna el objeto o None si no existe.
 def buscar_ticket(lista_tickets, numero):
     ticket_encontrado = None
     for ticket in lista_tickets:
@@ -41,7 +49,7 @@ def buscar_ticket(lista_tickets, numero):
             break
     return ticket_encontrado
 
-
+# Retorna una sublista con los tickets que coinciden con el estado especificado.
 def filtrar_por_estado(lista_tickets, estado):
     seleccion = []
     for ticket in lista_tickets:
@@ -49,7 +57,7 @@ def filtrar_por_estado(lista_tickets, estado):
             seleccion.append(ticket)
     return seleccion
 
-
+# Cuenta la cantidad de tickets que se encuentran en un determinado estado.
 def contar_por_estado(lista_tickets, estado):
     cantidad = 0
     for ticket in lista_tickets:
@@ -58,6 +66,10 @@ def contar_por_estado(lista_tickets, estado):
     return cantidad
 
 
+# ==========================================
+# BLOQUE 4: Entrada/Salida e Interacción
+# ==========================================
+# Muestra por pantalla la lista de tickets especificada.
 def mostrar_lista(lista_tickets):
     if len(lista_tickets) == 0:
         print("No hay tickets para mostrar.")
@@ -65,7 +77,7 @@ def mostrar_lista(lista_tickets):
     for ticket in lista_tickets:
         ticket.mostrar_datos()
 
-
+# Solicita y valida la entrada de un número entero desde el teclado.
 def pedir_numero(mensaje):
     while True:
         dato = input(mensaje).strip()
@@ -74,7 +86,7 @@ def pedir_numero(mensaje):
         except ValueError:
             print("Debe ingresar un numero entero.")
 
-
+# Solicita un número de ticket al usuario y muestra el resultado de la búsqueda.
 def consultar_ticket(lista_tickets):
     numero = pedir_numero("Ingrese el numero de ticket a consultar: ")
     ticket = buscar_ticket(lista_tickets, numero)
@@ -84,7 +96,7 @@ def consultar_ticket(lista_tickets):
     else:
         ticket.mostrar_datos()
 
-
+# Filtra y muestra todos los tickets con estado "Pendiente".
 def consultar_pendientes(lista_tickets):
     pendientes = filtrar_por_estado(lista_tickets, "Pendiente")
     print("")
@@ -93,6 +105,7 @@ def consultar_pendientes(lista_tickets):
     print(f"Cantidad de tickets pendientes: {contar_por_estado(lista_tickets, 'Pendiente')}")
 
 
+# Coordina la carga inicial y la ejecución de las consultas principales.
 def main():
     lista_tickets = crear_tickets()
 

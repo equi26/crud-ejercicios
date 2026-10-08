@@ -1,3 +1,6 @@
+
+# Modela un componente electrónico del laboratorio, con métodos para verificar
+# disponibilidad de stock y mostrar su detalle.
 class Componente:
     def __init__(self, codigo, nombre, tipo, marca, stock, ubicacion):
         self.codigo = codigo
@@ -22,6 +25,8 @@ class Componente:
         print("------------------------------")
 
 
+
+# Retorna el inventario inicial de componentes del laboratorio.
 def crear_componentes():
     componentes = [
         Componente("CMP-001", "Resistencia 220 ohm", "Resistencia", "Philips", 120, "Estante A1"),
@@ -42,13 +47,19 @@ def crear_componentes():
     return componentes
 
 
+
+#  Funciones auxiliares de texto
+
 def normalizar(texto):
     return texto.strip().lower()
 
-
+# Verifica insensible a mayúsculas si `texto` está contenido en `valor`.
 def contiene(valor, texto):
     return normalizar(texto) in normalizar(valor)
 
+
+
+# Validaciones de entrada del usuario
 
 def pedir_texto(mensaje):
     while True:
@@ -56,7 +67,6 @@ def pedir_texto(mensaje):
         if dato != "":
             return dato
         print("Debe ingresar al menos un dato.")
-
 
 def pedir_entero_positivo(mensaje):
     while True:
@@ -71,6 +81,9 @@ def pedir_entero_positivo(mensaje):
             print("Debe ingresar un numero entero valido.")
 
 
+
+#  Consultas y filtrado de catálogo
+# Extrae y muestra los tipos únicos de componentes disponibles.
 def mostrar_catalogo(lista_componentes):
     print("TIPOS DISPONIBLES EN EL LABORATORIO")
     tipos = []
@@ -85,7 +98,7 @@ def mostrar_catalogo(lista_componentes):
         print(f"- {tipo}")
     print("")
 
-
+# Filtra componentes por tipo/nombre y stock mínimo, determinando además el de mayor stock.
 def consultar_componentes(lista_componentes):
     tipo = pedir_texto("Ingrese el tipo de componente: ")
     stock_minimo = pedir_entero_positivo("Ingrese la cantidad minima de stock: ")
@@ -119,6 +132,9 @@ def consultar_componentes(lista_componentes):
     print("COMPONENTE CON MAYOR STOCK")
     componente_mayor_stock.mostrar_datos()
 
+
+
+#  Función principal y ejecución
 
 def main():
     lista_componentes = crear_componentes()

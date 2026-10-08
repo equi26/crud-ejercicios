@@ -1,3 +1,6 @@
+
+# Modela los datos de un videojuego y provee métodos para evaluar
+# género, horas estimadas de juego y mostrar la información completa.
 class Videojuego:
     def __init__(self, codigo, titulo, genero, plataforma, anio, horas_estimadas):
         self.codigo = codigo
@@ -24,6 +27,8 @@ class Videojuego:
         print("----------------------------------")
 
 
+
+# Instancia y devuelve el catálogo de videojuegos iniciales.
 def crear_videojuegos():
     videojuegos = [
         Videojuego("VG-001", "LaLeyenda del Valle Perdido", "Aventura", "PC", 2018, 45),
@@ -40,6 +45,10 @@ def crear_videojuegos():
     return videojuegos
 
 
+# ==========================================
+# BLOQUE 3: Funciones auxiliares y de búsqueda
+# ==========================================
+# Busca un videojuego mediante su código único.
 def buscar_por_codigo(lista_videojuegos, codigo):
     juego_encontrado = None
     for juego in lista_videojuegos:
@@ -48,14 +57,12 @@ def buscar_por_codigo(lista_videojuegos, codigo):
             break
     return juego_encontrado
 
-
 def pedir_texto(mensaje):
     while True:
         dato = input(mensaje).strip()
         if dato != "":
             return dato
         print("Debe ingresar al menos un dato.")
-
 
 def pedir_entero(mensaje):
     while True:
@@ -65,12 +72,14 @@ def pedir_entero(mensaje):
         except ValueError:
             print("Debe ingresar un numero entero valido.")
 
-
+# Imprime los datos reducidos de un juego en formato de renglón o fila.
 def mostrar_fila(juego, numero):
     print(f"[{numero}] {juego.codigo} - {juego.titulo}")
     print(f"      Genero: {juego.genero} | Plataforma: {juego.plataforma} | Anio: {juego.anio} | Horas: {juego.horas_estimadas}")
 
 
+
+# Consulta e imprime juegos según género.
 def consultar_por_genero(lista_videojuegos):
     genero = pedir_texto("Ingrese el genero a consultar: ")
     print("")
@@ -89,7 +98,7 @@ def consultar_por_genero(lista_videojuegos):
         return
     print(f"Cantidad de videojuegos encontrados: {cantidad}")
 
-
+# Consulta e imprime juegos que superen un umbral de horas de juego.
 def consultar_por_horas(lista_videojuegos):
     horas = pedir_entero("Ingrese la cantidad de horas a superar: ")
     print("")
@@ -108,7 +117,7 @@ def consultar_por_horas(lista_videojuegos):
         return
     print(f"Cantidad de videojuegos que superan las {horas} horas: {cantidad}")
 
-
+# Consulta e imprime la información completa de un juego según su código.
 def consultar_por_codigo(lista_videojuegos):
     codigo = pedir_texto("Ingrese el codigo del videojuego: ")
     juego = buscar_por_codigo(lista_videojuegos, codigo)
@@ -118,6 +127,9 @@ def consultar_por_codigo(lista_videojuegos):
     else:
         juego.mostrar_datos()
 
+
+
+# Función principal y ejecución
 
 def main():
     lista_videojuegos = crear_videojuegos()
